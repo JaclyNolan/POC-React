@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/poc-react-net-backend/apis/poc-react-net-backend",
+      "type": "apis.azure"
+    }
+  }
+}

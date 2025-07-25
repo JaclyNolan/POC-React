@@ -1,0 +1,67 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+*.vscode/
+*.dbmdl
+*.log
+*.pdb
+*.cache
+*.ide
+*.sdf
+*.opensdf
+*.VC.db
+*.DS_Store
+*.ncrunch*
+*.localhistory/
+TestResults/
+*.publishsettings
+*.swp
+*.tmp
+*.bak
+*.old
+*.orig
+*.rej
+*.sln.ide
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# npm & Node
+node_modules/
+dist/
+build/
+.env
+.env.*
+.npmrc
+
+# Vite
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Others
+*.log
+*.tgz
+.idea/
+*.iml
+
+# Optional: ignore local dev SSL certs
+*.pfx
+*.p12
