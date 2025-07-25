@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setToken } from './auth';
 import { Box, Button, TextField, Typography, Alert, Link, Paper } from '@mui/material';
+import axios from 'axios';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -14,17 +15,12 @@ export default function Login() {
     e.preventDefault();
     setError('');
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      if (!res.ok) throw new Error('Invalid credentials');
-      const data = await res.json();
-      setToken(data.token);
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL as string;
+      const res = await axios.post(`${apiBaseUrl}/auth/login`, { username, password });
+      setToken(res.data.token);
       navigate('/');
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      setError(err.response?.data || err.message || 'Login failed');
     }
   };
 

@@ -3,6 +3,7 @@ import Login from './Login';
 import Register from './Register';
 import { isLoggedIn, removeToken } from './auth';
 import { useState } from 'react';
+import axios from 'axios';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -20,9 +21,8 @@ function Home() {
   const callApi = async () => {
     try {
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL as string;
-      const response = await fetch(`${apiBaseUrl}/api/pooper`);
-      const text = await response.text();
-      setPooper(text);
+      const response = await axios.get(`${apiBaseUrl}/api/pooper`);
+      setPooper(response.data);
     } catch {
       setPooper('Error calling API');
     }

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, TextField, Typography, Alert, Link, Paper } from '@mui/material';
+import axios from 'axios';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -15,16 +16,12 @@ export default function Register() {
     setError('');
     setSuccess(false);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/auth/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      if (!res.ok) throw new Error('Registration failed');
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL as string;
+      await axios.post(`${apiBaseUrl}/auth/register`, { username, password });
       setSuccess(true);
       setTimeout(() => navigate('/login'), 1000);
     } catch (err: any) {
-      setError(err.message || 'Registration failed');
+      setError(err.response?.data || err.message || 'Registration failed');
     }
   };
 
